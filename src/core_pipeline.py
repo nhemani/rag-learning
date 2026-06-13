@@ -14,7 +14,14 @@ from langchain_huggingface import HuggingFaceEmbeddings
 class MedicalRAGApp:
     """Manages the full production pipeline execution: context retrieval and answer generation."""
     
-    def __init__(self, chroma_dir: str = "./data/chroma_db", embedding_model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
+    def __init__(self):
+        # Ingest parameters straight from the master config layer
+        self.config = load_pipeline_parameters()
+        
+        self.chroma_dir = self.config["ingestion"]["chroma_db_dir"]
+        self.embedding_name = self.config["embeddings"]["model_name"]
+        self.k_value = self.config["generation"]["retrieval_k"]
+        
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         
         self.embedding_model = HuggingFaceEmbeddings(
