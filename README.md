@@ -1,4 +1,4 @@
-# Clinical RAG Pipeline: Advanced Evaluation & Hyperparameter Framework
+# RAG Pipeline: Advanced Evaluation & Hyperparameter Framework
 
 An enterprise-grade, fully auditable Retrieval-Augmented Generation (RAG) framework optimized for resource-constrained environments (Google Colab T4 GPU). This architecture converts a volatile, probabilistic Local Large Language Model (Llama-2-13B) into a safe, factual clinical lookup utility indexing *The Merck Manual of Diagnosis & Therapy (19th Edition)*.
 
@@ -8,19 +8,6 @@ An enterprise-grade, fully auditable Retrieval-Augmented Generation (RAG) framew
 - **Eliminated Hallucinations:** Eradicated dangerous baseline suggestions (e.g., prescribing intravenous hospital narcotics on wilderness trails or performing tumor resections for trauma patients).
 - **Hardened Refusal Logic:** Solved prompt leakage and semantic loop errors, forcing the model to output a verified `I don't know` instead of fabricating non-medical info.
 - **Automated Self-Auditing:** Designed an internal, zero-VRAM cost **LLM-as-a-Judge** scoring array to evaluate pipeline extraction health in real-time.
-
----
-
-## 📊 Evaluation & Performance Matrix
-
-| Query ID & Category | Clinical Target / Question | Groundedness | Relevance | Architectural Mitigation & Structural Win |
-| :--- | :--- | :---: | :---: | :--- |
-| **Query 1: Critical Care** | ICU Sepsis Triage Protocol & Monitoring | **5 / 5** | **5 / 5** | Fixed prompt leakage. Grouped vital indicators into a cohesive clinical workflow. |
-| **Query 2: Gastroenterology**| Diagnostic Criteria for Appendicitis | **5 / 5** | **5 / 5** | Removed ungrounded claims that a normal inflamed appendix is a superficial palpable mass. |
-| **Query 3: Dermatology** | Sudden Patchy Hair Loss Interventions | **5 / 5** | **5 / 5** | **K=4 Optimization** resolved token truncation bugs across broad multi-page chapters. |
-| **Query 4: Neurology** | Traumatic Brain Injury (TBI) Management | **5 / 5** | **5 / 5** | Segregated medical domains, stopping trauma from blending into oncology sub-specialties. |
-| **Query 5: Wilderness** | On-Trail Leg Fracture Field Splinting | **5 / 5** | **5 / 5** | Blocked high-risk hallucinations regarding wilderness field tourniquets and controlled narcotics. |
-| **Negative Edge-Case** | Java List/Map Classes vs. Coding SOLID Rules | **5 / 5** | **1 / 5** | **Safe Refusal Verified:** Calibrated judge prompt accurately rewards honest negative refusals without penalty. |
 
 ---
 
@@ -76,7 +63,7 @@ Clone this repository and spin up your validation loop locally:
 ```bash
 # 1. Clone package files
 git clone https://github.com
-cd clinical-rag-pipeline
+cd rag-learning
 
 # 2. Extract dependencies
 pip install -r requirements.txt
