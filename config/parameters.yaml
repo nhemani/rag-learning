@@ -1,0 +1,32 @@
+# ===========================================================================
+# Clinical RAG Pipeline Global Configuration Parameters
+# ===========================================================================
+
+# Core Ingestion Settings
+ingestion:
+  chunk_size: 1000
+  chunk_overlap: 200
+  raw_data_path: "./data/raw/merck_manual_19th.pdf"
+  chroma_db_dir: "./data/chroma_db"
+
+# Embedding Model Configurations
+embeddings:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  collection_name: "clinical_merck_manual"
+
+# Primary LLM Generation Parameters (Fine-Tuned Production Strictness)
+generation:
+  model_name: "llama-2-13b-chat.Q4_K_M.gguf" # Target Llama engine weights filename
+  retrieval_k: 4                             # Validated optimal retrieval depth
+  temperature: 0.0                           # Strict determinism (Locks out hallucinations)
+  repeat_penalty: 1.15                       # Structural text-loop neutralization
+  max_tokens: 350                            # Budget ceiling to prevent cut-off protocols
+  top_p: 1.0
+  top_k: 1
+
+# Evaluation Judge Configurations
+evaluation_judge:
+  max_tokens: 150
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 1
